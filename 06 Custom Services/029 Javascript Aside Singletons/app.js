@@ -20,16 +20,20 @@ myApp.config(function ($routeProvider){
 	})
 });
 
-
 myApp.controller('mainController', ['$scope', '$log', function ($scope, $log) {
 	
-	
+	$scope.name='main';
+
+	$log.main='property from main';
+	$log.info($log);
 
 }]);
 
-myApp.controller('secondController', ['$scope', '$log', '$routeParams',
-	function ($scope, $log, $routeParams) {
+myApp.controller('secondController', ['$scope', '$log', '$routeParams', function ($scope, $log, $routeParams) {
 	
-	
+	$scope.num = $routeParams.num || 1;
+
+	$log.second='property from second';
+	$log.info($log);
 
 }]);
