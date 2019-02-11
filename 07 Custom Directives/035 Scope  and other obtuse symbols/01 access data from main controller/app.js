@@ -22,29 +22,10 @@ myApp.config(function ($routeProvider){
 
 
 myApp.controller('mainController', ['$scope', '$log', function ($scope, $log) {
-	$scope.people = [
-		{
-			name: 'Bibhu Samal',
-			address: 'Jaleswarpur', 
-			post: 'Kuanpal', 
-			city: 'Cuttack',
-			state: 'Odisha',
-			zip: '754204'
-		},
-		{
-			name: 'Ankita Samantaray',
-			address: 'Ramasahi', 
-			post: 'Athagarh', 
-			city: 'Cuttack',
-			state: 'Odisha',
-			zip: '750029'
-		}
-
-	];
-
-	$scope.formattedAddress = function(person){
-		return person.address + ', ' + person.post + ', ' + person.city + ', ' + person.state + ', ' + person.zip;
-	}
+	$scope.person = {
+		name: 'Bibhu Samal',
+		address: 'Jaleswarpur, Kuanpal, Cuttack, 754204'
+	};
 }]);
 
 myApp.controller('secondController', ['$scope', '$log', '$routeParams',
@@ -57,10 +38,6 @@ myApp.directive("searchResult", function(){
 		restrict: 'AEC',
 		templateUrl: 'directives/searchresult.html',
 		replace: true,
-		scope: { /* replace mainController scope*/
-			personObject: '=',
-			formattedAddressFunction: '&'
-		}
 	}
 });
 
