@@ -69,7 +69,14 @@ myApp.directive("searchResult", function(){
 			personObject: '=',
 			formattedAddressFunction: '&'
 		},
-		transclude: true
+		link: function(scope, elements, attrs){
+			console.log('linking...');
+			console.log(scope);
+			if(scope.personObject.name == 'Bibhu Samal'){
+				elements.removeAttr('class');
+			}
+			console.log(elements);
+		}
 	}	
 });
 

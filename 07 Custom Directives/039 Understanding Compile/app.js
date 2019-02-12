@@ -69,8 +69,27 @@ myApp.directive("searchResult", function(){
 			personObject: '=',
 			formattedAddressFunction: '&'
 		},
-		transclude: true
-	}	
+		compile: function(elem, attrs){
+			console.log('Compiling...');
+			//elem.removeAttr('class');
+			console.log(elem.html());
+
+			return{
+				pre: function(scope, elements, attrs){
+					console.log('Pre linking ...');
+					console.log(elements);
+				},
+				post: function(scope, elements, attrs){
+					console.log('post-linking...');
+					console.log(scope);
+					if(scope.personObject.name == 'Bibhu Samal'){
+						elements.removeAttr('class');
+					}
+					console.log(elements);
+				}
+			}
+		}
+	}
 });
 
 /*
